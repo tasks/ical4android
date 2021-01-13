@@ -145,8 +145,8 @@ class Task: ICalendar() {
                 }
 
 
-                if (due.date <= dtStart.date) {
-                    Ical4Android.log.warning("Found invalid DUE <= DTSTART; dropping DTSTART")
+                if (due.date < dtStart.date) {
+                    Ical4Android.log.warning("Found invalid DUE < DTSTART; dropping DTSTART")
                     t.dtStart = null
                 }
             }
