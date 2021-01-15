@@ -45,8 +45,11 @@ import java.util.logging.Level
  *
  */
 abstract class AndroidTask(
-        val taskList: AndroidTaskList<AndroidTask>
+        private val taskListOpt: AndroidTaskList<AndroidTask>?
 ) {
+
+    val taskList: AndroidTaskList<AndroidTask>
+        get() = taskListOpt!!
 
     companion object {
         const val UNKNOWN_PROPERTY_DATA = Properties.DATA0
