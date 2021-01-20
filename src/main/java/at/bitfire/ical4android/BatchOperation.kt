@@ -199,6 +199,10 @@ class BatchOperation(
             return this
         }
 
+        fun remove(key: String): CpoBuilder {
+            values.remove(key)
+            return this
+        }
 
         fun build(): ContentProviderOperation {
             val builder = when (type) {
