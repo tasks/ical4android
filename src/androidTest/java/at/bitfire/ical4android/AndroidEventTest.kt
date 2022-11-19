@@ -1,64 +1,70 @@
-/*
- * Copyright © Ricki Hirner (bitfire web engineering).
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Public License v3.0
- * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/gpl.html
- */
+/***************************************************************************************************
+ * Copyright © All Contributors. See LICENSE and AUTHORS in the root directory for details.
+ **************************************************************************************************/
 package at.bitfire.ical4android
 
 import android.Manifest
 import android.accounts.Account
+import android.content.ContentProviderClient
 import android.content.ContentUris
 import android.content.ContentValues
 import android.database.DatabaseUtils
 import android.net.Uri
-import android.provider.CalendarContract
 import android.provider.CalendarContract.*
-import androidx.test.filters.LargeTest
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import androidx.test.rule.GrantPermissionRule
-import at.bitfire.ical4android.MiscUtils.ContentProviderClientHelper.closeCompat
 import at.bitfire.ical4android.impl.TestCalendar
 import at.bitfire.ical4android.impl.TestEvent
 import at.bitfire.ical4android.util.AndroidTimeUtils
+import at.bitfire.ical4android.util.DateUtils
+import at.bitfire.ical4android.util.MiscUtils.ContentProviderClientHelper.closeCompat
+import at.bitfire.ical4android.util.MiscUtils.UriHelper.asSyncAdapter
 import net.fortuna.ical4j.model.*
-import net.fortuna.ical4j.model.Date
 import net.fortuna.ical4j.model.component.VAlarm
 import net.fortuna.ical4j.model.parameter.*
 import net.fortuna.ical4j.model.property.*
 import net.fortuna.ical4j.util.TimeZones
-import org.junit.After
+import org.junit.*
 import org.junit.Assert.*
-import org.junit.Before
-import org.junit.Rule
-import org.junit.Test
 import java.net.URI
 import java.time.Duration
 import java.time.Period
-import java.util.*
+import java.util.TimeZone
 
 class AndroidEventTest {
 
-    @JvmField
-    @Rule
-    val permissionRule = GrantPermissionRule.grant(
+    companion object {
+
+        @JvmField
+        @ClassRule
+        val permissionRule = GrantPermissionRule.grant(
             Manifest.permission.READ_CALENDAR,
             Manifest.permission.WRITE_CALENDAR
-    )!!
+        )
 
-    private val testAccount = Account("ical4android@example.com", CalendarContract.ACCOUNT_TYPE_LOCAL)
+        lateinit var provider: ContentProviderClient
+
+        @BeforeClass
+        @JvmStatic
+        fun connectProvider() {
+            provider = getInstrumentation().targetContext.contentResolver.acquireContentProviderClient(AUTHORITY)!!
+        }
+
+        @AfterClass
+        @JvmStatic
+        fun closeProvider() {
+            provider.closeCompat()
+        }
+
+    }
+
+    private val testAccount = Account("ical4android@example.com", ACCOUNT_TYPE_LOCAL)
 
     private val tzVienna = DateUtils.ical4jTimeZone("Europe/Vienna")!!
     private val tzShanghai = DateUtils.ical4jTimeZone("Asia/Shanghai")!!
 
     private val tzIdDefault = java.util.TimeZone.getDefault().id
     private val tzDefault = DateUtils.ical4jTimeZone(tzIdDefault)
-
-
-    private val provider by lazy {
-        getInstrumentation().targetContext.contentResolver.acquireContentProviderClient(CalendarContract.AUTHORITY)!!
-    }
 
     private lateinit var calendarUri: Uri
     private lateinit var calendar: TestCalendar
@@ -67,13 +73,12 @@ class AndroidEventTest {
     fun prepare() {
         calendar = TestCalendar.findOrCreate(testAccount, provider)
         assertNotNull(calendar)
-        calendarUri = ContentUris.withAppendedId(CalendarContract.Calendars.CONTENT_URI, calendar.id)
+        calendarUri = ContentUris.withAppendedId(Calendars.CONTENT_URI, calendar.id)
     }
 
     @After
     fun shutdown() {
         calendar.delete()
-        provider.closeCompat()
     }
 
 
@@ -120,14 +125,22 @@ class AndroidEventTest {
         }
     }
 
-    private fun firstUnknownProperty(values: ContentValues): Property? {
+    private fun firstExtendedProperty(values: ContentValues, mimeType: String): String? {
         val id = values.getAsInteger(Events._ID)
-        provider.query(calendar.syncAdapterURI(ExtendedProperties.CONTENT_URI), arrayOf(ExtendedProperties.VALUE),
+        provider.query(ExtendedProperties.CONTENT_URI.asSyncAdapter(testAccount), arrayOf(ExtendedProperties.VALUE),
                 "${ExtendedProperties.EVENT_ID}=?", arrayOf(id.toString()), null)?.use {
             if (it.moveToNext())
-                return UnknownProperty.fromJsonString(it.getString(0))
+                return it.getString(0)
         }
         return null
+    }
+
+    private fun firstUnknownProperty(values: ContentValues): Property? {
+        val rawValue = firstExtendedProperty(values, UnknownProperty.CONTENT_ITEM_TYPE)
+        return if (rawValue != null)
+            UnknownProperty.fromJsonString(rawValue)
+        else
+            null
     }
 
     @Test
@@ -501,6 +514,15 @@ class AndroidEventTest {
     }
 
     @Test
+    fun testBuildEvent_Url() {
+        buildEvent(true) {
+            url = URI("https://example.com")
+        }.let { result ->
+            assertEquals("https://example.com", firstExtendedProperty(result, AndroidEvent.MIMETYPE_URL))
+        }
+    }
+
+    @Test
     fun testBuildEvent_Description() {
         buildEvent(true) {
             description = "Sample Description"
@@ -684,7 +706,7 @@ class AndroidEventTest {
 
     private fun firstReminder(row: ContentValues): ContentValues? {
         val id = row.getAsInteger(Events._ID)
-        provider.query(calendar.syncAdapterURI(Reminders.CONTENT_URI), null,
+        provider.query(Reminders.CONTENT_URI.asSyncAdapter(testAccount), null,
                 "${Reminders.EVENT_ID}=?", arrayOf(id.toString()), null)?.use { cursor ->
             if (cursor.moveToNext()) {
                 val subRow = ContentValues(cursor.count)
@@ -870,7 +892,7 @@ class AndroidEventTest {
 
     private fun firstAttendee(row: ContentValues): ContentValues? {
         val id = row.getAsInteger(Events._ID)
-        provider.query(calendar.syncAdapterURI(Attendees.CONTENT_URI), null,
+        provider.query(Attendees.CONTENT_URI.asSyncAdapter(testAccount), null,
                 "${Attendees.EVENT_ID}=?", arrayOf(id.toString()), null)?.use { cursor ->
             if (cursor.moveToNext()) {
                 val subRow = ContentValues(cursor.count)
@@ -1249,7 +1271,7 @@ class AndroidEventTest {
 
     private fun firstException(values: ContentValues): ContentValues? {
         val id = values.getAsInteger(Events._ID)
-        provider.query(calendar.syncAdapterURI(Events.CONTENT_URI), null,
+        provider.query(Events.CONTENT_URI.asSyncAdapter(testAccount), null,
                 "${Events.ORIGINAL_ID}=?", arrayOf(id.toString()), null)?.use { cursor ->
             if (cursor.moveToNext()) {
                 val result = ContentValues(cursor.count)
@@ -1381,7 +1403,10 @@ class AndroidEventTest {
         valuesBuilder(values)
         Ical4Android.log.info("Inserting test event: $values")
         val uri = provider.insert(
-                if (asSyncAdapter) destinationCalendar.syncAdapterURI(Events.CONTENT_URI) else Events.CONTENT_URI,
+                if (asSyncAdapter)
+                    Events.CONTENT_URI.asSyncAdapter(testAccount)
+                else
+                    Events.CONTENT_URI,
                 values)!!
         val id = ContentUris.parseId(uri)
 
@@ -1436,6 +1461,21 @@ class AndroidEventTest {
     }
 
     @Test
+    fun testPopulateEvent_NonAllDay_Recurring_Duration_KievTimeZone() {
+        populateEvent(false) {
+            put(Events.DTSTART, 1592733600000L)  // 21/06/2020 18:00 +0800
+            put(Events.EVENT_TIMEZONE, "Europe/Kiev")
+            put(Events.DURATION, "PT1H")
+            put(Events.RRULE, "FREQ=DAILY;COUNT=2")
+        }.let { result ->
+            assertEquals(1592733600000L, result.dtStart?.date?.time)
+            assertEquals(1592733600000L + 3600000, result.dtEnd?.date?.time)
+            assertEquals("Europe/Kiev", result.dtStart?.timeZone?.id)
+            assertEquals("Europe/Kiev", result.dtEnd?.timeZone?.id)
+        }
+    }
+
+    @Test
     fun testPopulateEvent_NonAllDay_NonRecurring_NoTime() {
         populateEvent(false) {
             put(Events.DTSTART, 1592742600000L)  // 21/06/2020 14:30 +0200
@@ -1444,7 +1484,8 @@ class AndroidEventTest {
             put(Events.EVENT_END_TIMEZONE, "Europe/Vienna")
         }.let { result ->
             assertEquals(DtStart(DateTime("20200621T143000", tzVienna)), result.dtStart)
-            assertNull(result.dtEnd)
+            //assertNull(result.dtEnd)
+            assertEquals(result.dtEnd!!.date, result.dtStart!!.date)
             assertNull(result.duration)
         }
     }
@@ -1510,6 +1551,7 @@ class AndroidEventTest {
             assertNull(result.duration)
         }
     }
+
     @Test
     fun testPopulateEvent_AllDay_NonRecurring_NonAllDayDuration_MoreThanOneDay() {
         /* This should not happen, because according to the documentation, non-recurring events MUST
@@ -1541,6 +1583,19 @@ class AndroidEventTest {
             put(Events.EVENT_LOCATION, "Sample Location")
         }.let { result ->
             assertEquals("Sample Location", result.location)
+        }
+    }
+
+    @Test
+    fun textPopulateEvent_Url() {
+        populateEvent(true, insertCallback = { id ->
+            val urlValues = ContentValues()
+            urlValues.put(ExtendedProperties.EVENT_ID, id)
+            urlValues.put(ExtendedProperties.NAME, AndroidEvent.MIMETYPE_URL)
+            urlValues.put(ExtendedProperties.VALUE, "https://example.com")
+            provider.insert(ExtendedProperties.CONTENT_URI.asSyncAdapter(testAccount), urlValues)
+        }, valuesBuilder = {}).let { result ->
+            assertEquals(URI("https://example.com"), result.url)
         }
     }
 
@@ -1647,7 +1702,7 @@ class AndroidEventTest {
         populateEvent(true, valuesBuilder = {
             put(Events.ORGANIZER, "organizer@example.com")
         }, insertCallback = { id ->
-            provider.insert(calendar.syncAdapterURI(Attendees.CONTENT_URI), ContentValues().apply {
+            provider.insert(Attendees.CONTENT_URI.asSyncAdapter(testAccount), ContentValues().apply {
                 put(Attendees.EVENT_ID, id)
                 put(Attendees.ATTENDEE_EMAIL, "organizer@example.com")
                 put(Attendees.ATTENDEE_TYPE, Attendees.RELATIONSHIP_ORGANIZER)
@@ -1689,7 +1744,7 @@ class AndroidEventTest {
         populateEvent(true, valuesBuilder = {
             put(Events.ACCESS_LEVEL, Events.ACCESS_DEFAULT)
         }, insertCallback = { id ->
-            provider.insert(calendar.syncAdapterURI(ExtendedProperties.CONTENT_URI), ContentValues().apply {
+            provider.insert(ExtendedProperties.CONTENT_URI.asSyncAdapter(testAccount), ContentValues().apply {
                 put(ExtendedProperties.EVENT_ID, id)
                 put(ExtendedProperties.NAME, UnknownProperty.CONTENT_ITEM_TYPE)
                 put(ExtendedProperties.VALUE, UnknownProperty.toJsonString(Clazz.CONFIDENTIAL))
@@ -1713,7 +1768,7 @@ class AndroidEventTest {
         populateEvent(true, valuesBuilder = {
             put(Events.ACCESS_LEVEL, Events.ACCESS_DEFAULT)
         }, insertCallback = { id ->
-            provider.insert(calendar.syncAdapterURI(ExtendedProperties.CONTENT_URI), ContentValues().apply {
+            provider.insert(ExtendedProperties.CONTENT_URI.asSyncAdapter(testAccount), ContentValues().apply {
                 put(ExtendedProperties.EVENT_ID, id)
                 put(ExtendedProperties.NAME, UnknownProperty.CONTENT_ITEM_TYPE)
                 put(ExtendedProperties.VALUE, UnknownProperty.toJsonString(Clazz("TOP-SECRET")))
@@ -1738,7 +1793,7 @@ class AndroidEventTest {
             reminderValues.put(Reminders.EVENT_ID, id)
             builder(reminderValues)
             Ical4Android.log.info("Inserting test reminder: $reminderValues")
-            provider.insert(destinationCalendar.syncAdapterURI(Reminders.CONTENT_URI), reminderValues)
+            provider.insert(Reminders.CONTENT_URI.asSyncAdapter(testAccount), reminderValues)
         }).let { result ->
             return result.alarms.firstOrNull()
         }
@@ -1762,7 +1817,7 @@ class AndroidEventTest {
     @Test
     fun testPopulateReminder_TypeEmail_AccountNameNotEmail() {
         // test account name that doesn't look like an email address
-        val nonEmailAccount = Account("ical4android", CalendarContract.ACCOUNT_TYPE_LOCAL)
+        val nonEmailAccount = Account("ical4android", ACCOUNT_TYPE_LOCAL)
         val testCalendar = TestCalendar.findOrCreate(nonEmailAccount, provider)
         try {
             populateReminder(testCalendar) {
@@ -1815,7 +1870,7 @@ class AndroidEventTest {
             attendeeValues.put(Attendees.EVENT_ID, id)
             builder(attendeeValues)
             Ical4Android.log.info("Inserting test attendee: $attendeeValues")
-            provider.insert(calendar.syncAdapterURI(Attendees.CONTENT_URI), attendeeValues)
+            provider.insert(Attendees.CONTENT_URI.asSyncAdapter(testAccount), attendeeValues)
         }).let { result ->
             return result.attendees.firstOrNull()
         }
@@ -2054,7 +2109,7 @@ class AndroidEventTest {
             values.put(ExtendedProperties.EVENT_ID, id)
             values.put(ExtendedProperties.NAME, UnknownProperty.CONTENT_ITEM_TYPE)
             values.put(ExtendedProperties.VALUE, UnknownProperty.toJsonString(unknownProperty))
-            provider.insert(calendar.syncAdapterURI(ExtendedProperties.CONTENT_URI), values)
+            provider.insert(ExtendedProperties.CONTENT_URI.asSyncAdapter(testAccount), values)
         }).unknownProperties.first
         assertEquals("X-NAME", result.name)
         assertEquals("en", result.getParameter<Language>(Parameter.LANGUAGE).value)
@@ -2067,7 +2122,7 @@ class AndroidEventTest {
                 val exceptionValues = ContentValues()
                 exceptionValues.put(Events.CALENDAR_ID, calendar.id)
                 exceptionBuilder(exceptionValues)
-                provider.insert(calendar.syncAdapterURI(Events.CONTENT_URI), exceptionValues)
+                provider.insert(Events.CONTENT_URI.asSyncAdapter(testAccount), exceptionValues)
             })
 
     @Test
@@ -2250,39 +2305,23 @@ class AndroidEventTest {
 
 
 
-    @LargeTest
     @Test
-    fun testLargeTransactionManyRows() {
+    fun testTransaction() {
         val event = Event()
-        event.uid = "sample1@testLargeTransaction"
-        event.summary = "Large event"
+        event.uid = "sample1@testTransaction"
+        event.summary = "an event"
         event.dtStart = DtStart("20150502T120000Z")
         event.dtEnd = DtEnd("20150502T130000Z")
-        for (i in 0 until 4000)
+        for (i in 0 until 20)
             event.attendees += Attendee(URI("mailto:att$i@example.com"))
         val uri = TestEvent(calendar, event).add()
 
         val testEvent = calendar.findById(ContentUris.parseId(uri))
         try {
-            assertEquals(4000, testEvent.event!!.attendees.size)
+            assertEquals(20, testEvent.event!!.attendees.size)
         } finally {
             testEvent.delete()
         }
-    }
-
-    @Test(expected = CalendarStorageException::class)
-    fun testLargeTransactionSingleRow() {
-        val event = Event()
-        event.uid = "sample1@testLargeTransaction"
-        event.dtStart = DtStart("20150502T120000Z")
-        event.dtEnd = DtEnd("20150502T130000Z")
-
-        // 1 MB SUMMARY ... have fun
-        val data = CharArray(1024*1024)
-        Arrays.fill(data, 'x')
-        event.summary = String(data)
-
-        TestEvent(calendar, event).add()
     }
 
 }

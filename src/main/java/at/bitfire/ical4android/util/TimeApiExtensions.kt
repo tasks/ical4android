@@ -1,6 +1,9 @@
+/***************************************************************************************************
+ * Copyright © All Contributors. See LICENSE and AUTHORS in the root directory for details.
+ **************************************************************************************************/
+
 package at.bitfire.ical4android.util
 
-import at.bitfire.ical4android.DateUtils
 import net.fortuna.ical4j.model.Date
 import net.fortuna.ical4j.model.DateTime
 import net.fortuna.ical4j.util.TimeZones
@@ -15,9 +18,9 @@ object TimeApiExtensions {
     const val SECONDS_PER_MINUTE = 60
     const val SECONDS_PER_HOUR = SECONDS_PER_MINUTE * 60
     const val SECONDS_PER_DAY = SECONDS_PER_HOUR * 24
-    const val SECONDS_PER_WEEK = SECONDS_PER_DAY * DAYS_PER_WEEK
+    private const val SECONDS_PER_WEEK = SECONDS_PER_DAY * DAYS_PER_WEEK
 
-    const val MILLIS_PER_SECOND = 1000
+    private const val MILLIS_PER_SECOND = 1000
     const val MILLIS_PER_DAY = SECONDS_PER_DAY * MILLIS_PER_SECOND
 
     val tzUTC: TimeZone by lazy { TimeZones.getUtcTimeZone() }
@@ -27,8 +30,15 @@ object TimeApiExtensions {
 
     /**
      * [TimeZone.toZoneId] can't be used with the current desugaring library yet!
+     *
+     * @return [ZoneId] of the time zone; [ZoneOffset.UTC] if the time zone equals to [TimeZones.getUtcTimeZone]
      */
-    fun TimeZone.toZoneIdCompat(): ZoneId = ZoneId.of(id)
+    fun TimeZone.toZoneIdCompat(): ZoneId {
+        return if (this == TimeZones.getUtcTimeZone())
+            ZoneOffset.UTC
+        else
+            ZoneId.of(id)
+    }
 
 
     /***** Dates *****/
@@ -65,6 +75,15 @@ object TimeApiExtensions {
         return Date(cal)
     }
 
+    /**
+     * Converts this zoned date-time (date/time with specific time zone) to an
+     * ical4j [DateTime] object.
+     *
+     * Sets UTC flag ([DateTime.isUtc], means `...ThhmmddZ` format) when this zone-date time object has a
+     * time zone of [ZoneOffset.UTC].
+     *
+     * @return ical4j [DateTime] of the given zoned date-time
+     */
     fun ZonedDateTime.toIcal4jDateTime(): DateTime {
         val date = DateTime(toEpochSecond() * MILLIS_PER_SECOND)
         if (zone == ZoneOffset.UTC)
@@ -78,18 +97,18 @@ object TimeApiExtensions {
     /***** Durations *****/
 
     fun TemporalAmount.toDuration(position: Instant): Duration =
-            if (this is Duration)
-                this
-
-            else if (this is Period) {
+        when (this) {
+            is Duration -> this
+            is Period -> {
                 val calEnd = Calendar.getInstance(tzUTC)
                 calEnd.timeInMillis = position.toEpochMilli()
                 calEnd.add(Calendar.DAY_OF_MONTH, days)
                 calEnd.add(Calendar.MONTH, months)
                 calEnd.add(Calendar.YEAR, years)
                 Duration.ofMillis(calEnd.timeInMillis - position.toEpochMilli())
-            } else
-                throw IllegalArgumentException("TemporalAmount must be Period or Duration")
+            }
+            else -> throw IllegalArgumentException("TemporalAmount must be Period or Duration")
+        }
 
     /**
      * Converts a [TemporalAmount] to an RFC5545 duration value, which only uses

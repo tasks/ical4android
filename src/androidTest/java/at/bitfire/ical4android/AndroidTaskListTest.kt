@@ -1,10 +1,6 @@
-/*
- * Copyright © Ricki Hirner (bitfire web engineering).
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Public License v3.0
- * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/gpl.html
- */
+/***************************************************************************************************
+ * Copyright © All Contributors. See LICENSE and AUTHORS in the root directory for details.
+ **************************************************************************************************/
 
 package at.bitfire.ical4android
 
@@ -81,7 +77,7 @@ class AndroidTaskListTest(providerName: TaskProvider.ProviderName):
             val parentContentUri = TestTask(taskList, parent).add()
             val parentId = ContentUris.parseId(parentContentUri)
 
-            // OpenTasks should provide the correct relation…
+            // OpenTasks should provide the correct relation
             taskList.provider.client.query(taskList.tasksPropertiesSyncUri(), null,
                     "${Properties.TASK_ID}=?", arrayOf(childId.toString()),
                     null, null)!!.use { cursor ->
@@ -95,12 +91,6 @@ class AndroidTaskListTest(providerName: TaskProvider.ProviderName):
                 assertEquals(parentId, row.getAsLong(Relation.RELATED_ID))
                 assertEquals(parent.uid, row.getAsString(Relation.RELATED_UID))
                 assertEquals(Relation.RELTYPE_PARENT, row.getAsInteger(Relation.RELATED_TYPE))
-            }
-            // … BUT the parent_id is not updated (https://github.com/dmfs/opentasks/issues/877)
-            taskList.provider.client.query(childContentUri, arrayOf(Tasks.PARENT_ID),
-                    null, null, null)!!.use { cursor ->
-                assertTrue(cursor.moveToNext())
-                assertTrue(cursor.isNull(0))
             }
 
             // touch the relations to update parent_id values

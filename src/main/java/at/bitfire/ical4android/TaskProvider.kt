@@ -1,21 +1,15 @@
-/*
- * Copyright © Ricki Hirner (bitfire web engineering).
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Public License v3.0
- * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/gpl.html
- */
+/***************************************************************************************************
+ * Copyright © All Contributors. See LICENSE and AUTHORS in the root directory for details.
+ **************************************************************************************************/
 
 package at.bitfire.ical4android
 
-import android.accounts.Account
 import android.annotation.SuppressLint
 import android.content.ContentProviderClient
 import android.content.Context
 import android.content.pm.PackageManager
-import android.net.Uri
 import androidx.core.content.pm.PackageInfoCompat
-import at.bitfire.ical4android.MiscUtils.ContentProviderClientHelper.closeCompat
+import at.bitfire.ical4android.util.MiscUtils.ContentProviderClientHelper.closeCompat
 import org.dmfs.tasks.contract.TaskContract
 import java.io.Closeable
 import java.util.logging.Level
@@ -35,7 +29,8 @@ class TaskProvider private constructor(
             private val writePermission: String
     ) {
         OpenTasks("org.dmfs.tasks", "org.dmfs.tasks", 103, "1.1.8.2", PERMISSION_OPENTASKS_READ, PERMISSION_OPENTASKS_WRITE),
-        TasksOrg("org.tasks.opentasks", "org.tasks", 100000, "10.0", PERMISSION_TASKS_ORG_READ, PERMISSION_TASKS_ORG_WRITE);
+        TasksOrg("org.tasks.opentasks", "org.tasks", 100000, "10.0", PERMISSION_TASKS_ORG_READ, PERMISSION_TASKS_ORG_WRITE),
+        JtxBoard("at.techbee.jtx.provider", "at.techbee.jtx", 101010006, "1.01.01", PERMISSION_JTX_READ, PERMISSION_JTX_WRITE);
 
         companion object {
             fun fromAuthority(authority: String): ProviderName {
@@ -54,7 +49,8 @@ class TaskProvider private constructor(
 
         val TASK_PROVIDERS = listOf(
                 ProviderName.OpenTasks,
-                ProviderName.TasksOrg
+                ProviderName.TasksOrg,
+                ProviderName.JtxBoard
         )
 
         const val PERMISSION_OPENTASKS_READ = "org.dmfs.permission.READ_TASKS"
@@ -64,6 +60,10 @@ class TaskProvider private constructor(
         const val PERMISSION_TASKS_ORG_READ = "org.tasks.permission.READ_TASKS"
         const val PERMISSION_TASKS_ORG_WRITE = "org.tasks.permission.WRITE_TASKS"
         val PERMISSIONS_TASKS_ORG = arrayOf(PERMISSION_TASKS_ORG_READ, PERMISSION_TASKS_ORG_WRITE)
+
+        const val PERMISSION_JTX_READ = "at.techbee.jtx.permission.READ"
+        const val PERMISSION_JTX_WRITE = "at.techbee.jtx.permission.WRITE"
+        val PERMISSIONS_JTX = arrayOf(PERMISSION_JTX_READ, PERMISSION_JTX_WRITE)
 
         /**
          * Acquires a content provider for a given task provider. The content provider will
@@ -107,7 +107,7 @@ class TaskProvider private constructor(
          * @throws PackageManager.NameNotFoundException if the tasks provider is not installed
          * @throws [ProviderTooOldException] if the tasks provider is installed, but doesn't meet the minimum version requirement
          * */
-        private fun checkVersion(context: Context, name: ProviderName) {
+        fun checkVersion(context: Context, name: ProviderName) {
             // check whether package is available with required minimum version
             val info = context.packageManager.getPackageInfo(name.packageName, 0)
             val installedVersionCode = PackageInfoCompat.getLongVersionCode(info)
@@ -117,12 +117,6 @@ class TaskProvider private constructor(
                 throw exception
             }
         }
-
-        fun syncAdapterUri(uri: Uri, account: Account) = uri.buildUpon()
-                .appendQueryParameter(TaskContract.ACCOUNT_NAME, account.name)
-                .appendQueryParameter(TaskContract.ACCOUNT_TYPE, account.type)
-                .appendQueryParameter(TaskContract.CALLER_IS_SYNCADAPTER, "true")
-                .build()!!
 
     }
 

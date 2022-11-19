@@ -1,13 +1,10 @@
-/*
- * Copyright © Ricki Hirner (bitfire web engineering).
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Public License v3.0
- * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/gpl.html
- */
+/***************************************************************************************************
+ * Copyright © All Contributors. See LICENSE and AUTHORS in the root directory for details.
+ **************************************************************************************************/
 
 package at.bitfire.ical4android
 
+import android.graphics.Color
 import kotlin.math.sqrt
 
 /**
@@ -170,16 +167,31 @@ enum class Css3Color(val argb: Int) {
     companion object {
 
         /**
-         * Returns the CSS3 color property of the given name.
+         * Parses the given color either as CSS3 color name or as (A)RGB hex value.
          *
-         * @param name      color name
-         * @return          [Css3Color] object or null if no match was found
+         * @param color     CSS3 color name like "blue" or (A)RGB hex value like #0000FF
+         * @return          ARGB color value or *null* if the color couldn't be parsed
+         */
+        fun colorFromString(color: String): Int? =
+            fromString(color)?.argb ?:
+                try {
+                    Color.parseColor(color)
+                } catch(e: Exception) {
+                    Ical4Android.log.warning("Invalid color value: $color")
+                    null
+                }
+
+        /**
+         * Returns the Css3Color object of the given CSS3 color name.
+         *
+         * @param name      CSS3 color name like "blue"
+         * @return          [Css3Color] object or *null* if no match was found
          */
         fun fromString(name: String) =
                 try {
-                    valueOf(name)
+                    valueOf(name.lowercase())
                 } catch (e: IllegalArgumentException) {
-                    Ical4Android.log.warning("Unknown color: $name")
+                    Ical4Android.log.warning("Invalid color name: $name")
                     null
                 }
 

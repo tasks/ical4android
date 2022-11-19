@@ -1,13 +1,11 @@
-/*
- * Copyright © Ricki Hirner (bitfire web engineering).
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Public License v3.0
- * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/gpl.html
- */
+/***************************************************************************************************
+ * Copyright © All Contributors. See LICENSE and AUTHORS in the root directory for details.
+ **************************************************************************************************/
 
 package at.bitfire.ical4android
 
+import at.bitfire.ical4android.util.MiscUtils
+import at.bitfire.ical4android.validation.ICalPreprocessor
 import net.fortuna.ical4j.data.CalendarBuilder
 import net.fortuna.ical4j.data.ParserException
 import net.fortuna.ical4j.model.Calendar
@@ -48,6 +46,7 @@ open class ICalendar {
 
         // known iCalendar properties
         const val CALENDAR_NAME = "X-WR-CALNAME"
+        const val CALENDAR_COLOR = "X-APPLE-CALENDAR-COLOR"
 
         /**
          * Default PRODID used when generating iCalendars. If you want another value, set it
@@ -97,6 +96,13 @@ open class ICalendar {
             properties?.let {
                 calendar.getProperty<Property>(CALENDAR_NAME)?.let { calName ->
                     properties[CALENDAR_NAME] = calName.value
+                }
+
+                calendar.getProperty<Property>(Color.PROPERTY_NAME)?.let { calColor ->
+                    properties[Color.PROPERTY_NAME] = calColor.value
+                }
+                calendar.getProperty<Property>(CALENDAR_COLOR)?.let { calColor ->
+                    properties[CALENDAR_COLOR] = calColor.value
                 }
             }
 
@@ -294,7 +300,7 @@ open class ICalendar {
                     else -> throw IllegalArgumentException("reference must be Event or Task")
                 }
                 if (duration != null)
-                    end = Date.from(start.toInstant() + duration)
+                    end = java.util.Date.from(start.toInstant() + duration)
             }
 
             // event/task duration
@@ -313,14 +319,13 @@ open class ICalendar {
                 // 2) Android doesn't know alarm seconds, but only minutes. Cut off seconds from the final result.
                 // 3) DURATION can be a Duration (time-based) or a Period (date-based), which have to be treated differently.
                 var millisBefore =
-                        if (triggerDur is Duration)
-                            -triggerDur.toMillis()
-                        else if (triggerDur is Period)
-                            // TODO: Take time zones into account (will probably be possible with ical4j 4.x).
+                    when (triggerDur) {
+                        is Duration -> -triggerDur.toMillis()
+                        is Period -> // TODO: Take time zones into account (will probably be possible with ical4j 4.x).
                             // For instance, an alarm one day before the DST change should be 23/25 hours before the event.
                             -triggerDur.days.toLong()*24*3600000     // months and years are not used in DURATION values; weeks are calculated to days
-                        else
-                            throw AssertionError("triggerDur must be Duration or Period")
+                        else -> throw AssertionError("triggerDur must be Duration or Period")
+                    }
 
                 if (related == Related.END && !allowRelEnd) {
                     if (duration == null) {

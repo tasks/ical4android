@@ -1,3 +1,7 @@
+/***************************************************************************************************
+ * Copyright © All Contributors. See LICENSE and AUTHORS in the root directory for details.
+ **************************************************************************************************/
+
 package at.bitfire.ical4android
 
 import android.content.ContentResolver
@@ -43,16 +47,14 @@ object UnknownProperty {
         val name = json.getString(0)
         val value = json.getString(1)
 
-        val builder = PropertyBuilder()
-                .factories(propertyFactorySupplier)
+        val builder = PropertyBuilder(propertyFactorySupplier)
                 .name(name)
                 .value(value)
 
         json.optJSONObject(2)?.let { jsonParams ->
             for (paramName in jsonParams.keys())
                 builder.parameter(
-                        ParameterBuilder()
-                                .factories(parameterFactorySupplier)
+                        ParameterBuilder(parameterFactorySupplier)
                                 .name(paramName)
                                 .value(jsonParams.getString(paramName))
                                 .build()

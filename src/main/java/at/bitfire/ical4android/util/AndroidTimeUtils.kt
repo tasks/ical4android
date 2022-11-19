@@ -1,9 +1,12 @@
+/***************************************************************************************************
+ * Copyright © All Contributors. See LICENSE and AUTHORS in the root directory for details.
+ **************************************************************************************************/
+
 @file:Suppress("DEPRECATION")
 
 package at.bitfire.ical4android.util
 
 import android.text.format.Time
-import at.bitfire.ical4android.DateUtils
 import at.bitfire.ical4android.Ical4Android
 import net.fortuna.ical4j.model.*
 import net.fortuna.ical4j.model.Date
@@ -29,8 +32,8 @@ object AndroidTimeUtils {
     @Suppress("DEPRECATION")
     val TZID_ALLDAY = Time.TIMEZONE_UTC
 
-    const val RECURRENCE_LIST_TZID_SEPARATOR = ';'
-    const val RECURRENCE_LIST_VALUE_SEPARATOR = ","
+    private const val RECURRENCE_LIST_TZID_SEPARATOR = ';'
+    private const val RECURRENCE_LIST_VALUE_SEPARATOR = ","
 
     /**
      * Used to separate multiple RRULEs/EXRULEs in the RRULE/EXRULE storage field.
@@ -51,12 +54,8 @@ object AndroidTimeUtils {
      */
     fun androidifyTimeZone(date: DateProperty?) {
         if (DateUtils.isDateTime(date) && date?.isUtc == false) {
-            val tzID = date.timeZone?.id
-            val bestMatchingTzId = DateUtils.findAndroidTimezoneID(tzID)
-            if (tzID != bestMatchingTzId) {
-                Ical4Android.log.warning("Android doesn't know time zone ${tzID ?: "(floating)"}, setting default time zone $bestMatchingTzId")
-                date.timeZone = DateUtils.ical4jTimeZone(bestMatchingTzId)
-            }
+            val tzID = DateUtils.findAndroidTimezoneID(date.timeZone?.id)
+            date.timeZone = DateUtils.ical4jTimeZone(tzID)
         }
     }
 
@@ -69,24 +68,33 @@ object AndroidTimeUtils {
      * @param dateList [DateListProperty] to validate. Values which are not DATE-TIME will be ignored.
      */
     fun androidifyTimeZone(dateList: DateListProperty) {
-        val dates = dateList.dates
-        if (dates.type == Value.DATE_TIME && !dates.isUtc) {
-            val tzID = dateList.dates.timeZone?.id
-            val bestMatchingTzId = DateUtils.findAndroidTimezoneID(tzID)
-            if (tzID != bestMatchingTzId) {
-                Ical4Android.log.warning("Android doesn't know time zone ${tzID ?: "(floating)"}, setting default time zone $bestMatchingTzId")
-                dateList.timeZone = DateUtils.ical4jTimeZone(bestMatchingTzId)
-            }
+        // periods (RDate only)
+        val periods = (dateList as? RDate)?.periods
+        if (periods != null && periods.size > 0 && !periods.isUtc) {
+            val tzID = DateUtils.findAndroidTimezoneID(periods.timeZone?.id)
 
-            // keep the time zone of dateList in sync with the actual dates
-            if (dateList.timeZone != dates.timeZone)
-                dateList.timeZone = dates.timeZone
+            // Setting the time zone won't work until resolved in ical4j (https://github.com/ical4j/ical4j/discussions/568)
+            // DateListProperty.setTimeZone() does not set the timeZone property when the DateList has PERIODs
+            dateList.timeZone = DateUtils.ical4jTimeZone(tzID)
+
+            return //  RDate can only contain periods OR dates - not both, bail out fast
+        }
+
+        // date-times (RDate and ExDate)
+        val dates = dateList.dates
+        if (dates != null && dates.size > 0) {
+            if (dates.type == Value.DATE_TIME && !dates.isUtc) {
+                val tzID = DateUtils.findAndroidTimezoneID(dates.timeZone?.id)
+                dateList.timeZone = DateUtils.ical4jTimeZone(tzID)
+            }
         }
     }
 
     /**
      * Returns the time-zone ID for a given date or date-time that should be used to store it
      * in the Android calendar provider.
+     *
+     * Does not check whether Android actually knows the time zone ID – use [androidifyTimeZone] for that.
      *
      * @param date DateProperty (DATE or DATE-TIME) whose time-zone information is used
      *
@@ -118,6 +126,7 @@ object AndroidTimeUtils {
     /**
      * Concatenates, if necessary, multiple RDATE/EXDATE lists and converts them to
      * a formatted string which Android calendar provider can process.
+     *
      * Android expects this format: "[TZID;]date1,date2,date3" where date is "yyyymmddThhmmss" (when
      * TZID is given) or "yyyymmddThhmmssZ". We don't use the TZID format here because then we're limited
      * to one time-zone, while an iCalendar may contain multiple EXDATE/RDATE lines with different time zones.
@@ -136,15 +145,15 @@ object AndroidTimeUtils {
         val strDates = LinkedList<String>()
 
         // use time zone of first entry for the whole set; null for UTC
-        val tz = dates.firstOrNull()?.dates?.timeZone
+        val tz =
+            (dates.firstOrNull() as? RDate)?.periods?.timeZone ?:   // VALUE=PERIOD (only RDate)
+            dates.firstOrNull()?.dates?.timeZone                    // VALUE=DATE/DATE-TIME
 
         for (dateListProp in dates) {
-            if (dateListProp is RDate)
-                if (dateListProp.periods.isNotEmpty())
-                    Ical4Android.log.warning("RDATE PERIOD not supported, ignoring")
-            else if (dateListProp is ExDate)
-                    if (dateListProp.periods.isNotEmpty())
-                        Ical4Android.log.warning("EXDATE PERIOD not supported, ignoring")
+            if (dateListProp is RDate && dateListProp.periods.isNotEmpty()) {
+                Ical4Android.log.warning("RDATE PERIOD not supported, ignoring")
+                break
+            }
 
             when (dateListProp.dates.type) {
                 Value.DATE_TIME -> {
@@ -168,9 +177,8 @@ object AndroidTimeUtils {
 
         // format: [tzid;]value1,value2,...
         val result = StringBuilder()
-        if (tz != null) {
+        if (tz != null)
             result.append(tz.id).append(RECURRENCE_LIST_TZID_SEPARATOR)
-        }
         result.append(strDates.joinToString(RECURRENCE_LIST_VALUE_SEPARATOR))
         return result.toString()
     }
@@ -273,7 +281,7 @@ object AndroidTimeUtils {
     }
 
 
-        // duration
+    // duration
 
     /**
      * Checks and fixes [Event.duration] values with incorrect format which can't be
