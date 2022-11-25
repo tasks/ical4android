@@ -16,6 +16,7 @@ import org.dmfs.tasks.contract.TaskContract.TaskLists
 import org.dmfs.tasks.contract.TaskContract.Tasks
 import java.io.FileNotFoundException
 import java.util.*
+import java.util.logging.Level
 
 
 /**
@@ -35,9 +36,8 @@ abstract class AndroidTaskList<out T : AndroidTask>(
         fun create(account: Account, provider: TaskProvider, info: ContentValues): Uri {
             info.put(TaskContract.ACCOUNT_NAME, account.name)
             info.put(TaskContract.ACCOUNT_TYPE, account.type)
-            info.put(TaskLists.ACCESS_LEVEL, 0)
 
-            Ical4Android.log.info("Creating local task list: $info")
+            Ical4Android.log.log(Level.FINE, "Creating ${provider.name.authority} task list", info)
             return provider.client.insert(provider.taskListsUri().asSyncAdapter(account), info)
                 ?: throw CalendarStorageException("Couldn't create task list (empty result from provider)")
         }
@@ -107,8 +107,15 @@ abstract class AndroidTaskList<out T : AndroidTask>(
         values.getAsInteger(TaskLists.VISIBLE)?.let { isVisible = it != 0 }
     }
 
-    fun update(info: ContentValues) = provider.client.update(taskListSyncUri(), info, null, null)
-    fun delete() = provider.client.delete(taskListSyncUri(), null, null)
+    fun update(info: ContentValues): Int {
+        Ical4Android.log.log(Level.FINE, "Updating ${provider.name.authority} task list (#$id)", info)
+        return provider.client.update(taskListSyncUri(), info, null, null)
+    }
+
+    fun delete(): Int {
+        Ical4Android.log.log(Level.FINE, "Deleting ${provider.name.authority} task list (#$id)")
+        return provider.client.delete(taskListSyncUri(), null, null)
+    }
 
     /**
      * When tasks are added or updated, they may refer to related tasks by UID ([Relation.RELATED_UID]).
