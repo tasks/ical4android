@@ -526,11 +526,9 @@ open class JtxICalObject(
                     iCalObject.dueTimezone = dtStartTZ
                 }
 
-                if ( iCalObject.dtstart != null && iCalObject.due != null && iCalObject.due!! <= iCalObject.dtstart!!) {
-                    Ical4Android.log.warning("Found invalid DUE <= DTSTART; dropping DUE")     // Dtstart must not be dropped as it might be the basis for recurring tasks
-                    iCalObject.due = null
-                    iCalObject.dueTimezone = null
-                }
+                //previously due was dropped, now reduced to a warning, see also https://github.com/bitfireAT/ical4android/issues/70
+                if ( iCalObject.dtstart != null && iCalObject.due != null && iCalObject.due!! < iCalObject.dtstart!!)
+                    Ical4Android.log.warning("Found invalid DUE < DTSTART")
             }
 
             if (iCalObject.duration != null && iCalObject.dtstart == null) {
@@ -550,7 +548,7 @@ open class JtxICalObject(
 
         val ical = Calendar()
         ical.properties += Version.VERSION_2_0
-        ical.properties += ICalendar.prodId
+        ical.properties += ICalendar.prodId(listOf(TaskProvider.ProviderName.JtxBoard.packageName))
 
         val calComponent = when (component) {
             JtxContract.JtxICalObject.Component.VTODO.name -> VToDo(true /* generates DTSTAMP */)
