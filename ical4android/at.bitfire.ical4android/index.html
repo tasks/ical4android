@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>at.bitfire.ical4android</title>
+    <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../index.html">
+                    <span>ical4android</span>
+            </a>
+    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
+        <div id="sideMenu"></div>
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageIds="ical4android::at.bitfire.ical4android////PointingToDeclaration//579055962">
+  <div class="breadcrumbs"><a href="../../index.html">ical4android</a><span class="delimiter">/</span><span class="current">at.bitfire.ical4android</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button></div>
+    <div class="tabs-section-body">
+      <h2 class="">Types</h2>
+      <div class="table" data-togglable="Types"><a data-name="1504491629%2FClasslikes%2F579055962" anchor-label="AndroidCalendar" id="1504491629%2FClasslikes%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-android-calendar/index.html"><span>Android</span><wbr></wbr><span><span>Calendar</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1504491629%2FClasslikes%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-android-calendar/index.html">AndroidCalendar</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="-android-calendar/index.html">T</a><span class="token operator"> : </span><a href="-android-event/index.html">AndroidEvent</a><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>account<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/accounts/Account.html">Account</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>provider<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/ContentProviderClient.html">ContentProviderClient</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>eventFactory<span class="token operator">: </span><a href="-android-event-factory/index.html">AndroidEventFactory</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-android-calendar/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>id<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Represents a locally stored calendar, containing <a href="-android-event/index.html">AndroidEvent</a>s (whose data objects are <a href="-event/index.html">Event</a>s). Communicates with the Android Contacts Provider which uses an SQLite database to store the events.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1397790005%2FClasslikes%2F579055962" anchor-label="AndroidCalendarFactory" id="-1397790005%2FClasslikes%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-android-calendar-factory/index.html"><span>Android</span><wbr></wbr><span>Calendar</span><wbr></wbr><span><span>Factory</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1397790005%2FClasslikes%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-android-calendar-factory/index.html">AndroidCalendarFactory</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="-android-calendar-factory/index.html">T</a><span class="token operator"> : </span><a href="-android-calendar/index.html">AndroidCalendar</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-android-event/index.html">AndroidEvent</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-779422637%2FClasslikes%2F579055962" anchor-label="AndroidCompatTimeZoneRegistry" id="-779422637%2FClasslikes%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-android-compat-time-zone-registry/index.html"><span>Android</span><wbr></wbr><span>Compat</span><wbr></wbr><span>Time</span><wbr></wbr><span>Zone</span><wbr></wbr><span><span>Registry</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-779422637%2FClasslikes%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-android-compat-time-zone-registry/index.html">AndroidCompatTimeZoneRegistry</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">base<span class="token operator">: </span><span data-unresolved-link="net.fortuna.ical4j.model/TimeZoneRegistry///PointingToDeclaration/">TimeZoneRegistry</span></span></span><span class="token punctuation">)</span> : <span data-unresolved-link="net.fortuna.ical4j.model/TimeZoneRegistry///PointingToDeclaration/">TimeZoneRegistry</span></div><div class="brief "><p class="paragraph">The purpose of this class is that if a time zone has a different name in ical4j and Android, it should use the Android name.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1053330595%2FClasslikes%2F579055962" anchor-label="AndroidEvent" id="-1053330595%2FClasslikes%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-android-event/index.html"><span>Android</span><wbr></wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1053330595%2FClasslikes%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-android-event/index.html">AndroidEvent</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>calendar<span class="token operator">: </span><a href="-android-calendar/index.html">AndroidCalendar</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-android-event/index.html">AndroidEvent</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Stores and retrieves VEVENT iCalendar objects (represented as <a href="-event/index.html">Event</a>s) to/from the Android Calendar provider.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1818656293%2FClasslikes%2F579055962" anchor-label="AndroidEventFactory" id="-1818656293%2FClasslikes%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-android-event-factory/index.html"><span>Android</span><wbr></wbr><span>Event</span><wbr></wbr><span><span>Factory</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1818656293%2FClasslikes%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-android-event-factory/index.html">AndroidEventFactory</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="-android-event-factory/index.html">T</a><span class="token operator"> : </span><a href="-android-event/index.html">AndroidEvent</a><span class="token operator">&gt;</span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1397245690%2FClasslikes%2F579055962" anchor-label="AndroidTask" id="-1397245690%2FClasslikes%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-android-task/index.html"><span>Android</span><wbr></wbr><span><span>Task</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1397245690%2FClasslikes%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-android-task/index.html">AndroidTask</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>taskList<span class="token operator">: </span><a href="-android-task-list/index.html">AndroidTaskList</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-android-task/index.html">AndroidTask</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Stores and retrieves VTODO iCalendar objects (represented as <a href="-task/index.html">Task</a>s) to/from the OpenTasks provider.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-52937710%2FClasslikes%2F579055962" anchor-label="AndroidTaskFactory" id="-52937710%2FClasslikes%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-android-task-factory/index.html"><span>Android</span><wbr></wbr><span>Task</span><wbr></wbr><span><span>Factory</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-52937710%2FClasslikes%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-android-task-factory/index.html">AndroidTaskFactory</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="-android-task-factory/index.html">T</a><span class="token operator"> : </span><a href="-android-task/index.html">AndroidTask</a><span class="token operator">&gt;</span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1907862648%2FClasslikes%2F579055962" anchor-label="AndroidTaskList" id="-1907862648%2FClasslikes%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-android-task-list/index.html"><span>Android</span><wbr></wbr><span>Task</span><wbr></wbr><span><span>List</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1907862648%2FClasslikes%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-android-task-list/index.html">AndroidTaskList</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="-android-task-list/index.html">T</a><span class="token operator"> : </span><a href="-android-task/index.html">AndroidTask</a><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>account<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/accounts/Account.html">Account</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>provider<span class="token operator">: </span><a href="-task-provider/index.html">TaskProvider</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>taskFactory<span class="token operator">: </span><a href="-android-task-factory/index.html">AndroidTaskFactory</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-android-task-list/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>id<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Represents a locally stored task list, containing AndroidTasks (whose data objects are Tasks). Communicates with third-party content providers to store the tasks. Currently, only the OpenTasks tasks provider (org.dmfs.provider.tasks) is supported.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1855925072%2FClasslikes%2F579055962" anchor-label="AndroidTaskListFactory" id="1855925072%2FClasslikes%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-android-task-list-factory/index.html"><span>Android</span><wbr></wbr><span>Task</span><wbr></wbr><span>List</span><wbr></wbr><span><span>Factory</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1855925072%2FClasslikes%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-android-task-list-factory/index.html">AndroidTaskListFactory</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="-android-task-list-factory/index.html">T</a><span class="token operator"> : </span><a href="-android-task-list/index.html">AndroidTaskList</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-android-task/index.html">AndroidTask</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="2012231561%2FClasslikes%2F579055962" anchor-label="AttendeeMappings" id="2012231561%2FClasslikes%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-attendee-mappings/index.html"><span>Attendee</span><wbr></wbr><span><span>Mappings</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2012231561%2FClasslikes%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-attendee-mappings/index.html">AttendeeMappings</a></div><div class="brief "><p class="paragraph">Defines mappings between Android <a href="https://developer.android.com/reference/kotlin/android/provider/CalendarContract.Attendees.html">CalendarContract.Attendees</a> and iCalendar parameters.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="974167547%2FClasslikes%2F579055962" anchor-label="BatchOperation" id="974167547%2FClasslikes%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-batch-operation/index.html"><span>Batch</span><wbr></wbr><span><span>Operation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="974167547%2FClasslikes%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-batch-operation/index.html">BatchOperation</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">providerClient<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/ContentProviderClient.html">ContentProviderClient</a></span></span><span class="token punctuation">)</span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="322702518%2FClasslikes%2F579055962" anchor-label="CalendarStorageException" id="322702518%2FClasslikes%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-calendar-storage-exception/index.html"><span>Calendar</span><wbr></wbr><span>Storage</span><wbr></wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="322702518%2FClasslikes%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-calendar-storage-exception/index.html">CalendarStorageException</a> : <a href="https://developer.android.com/reference/kotlin/java/lang/Exception.html">Exception</a></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-11983353%2FClasslikes%2F579055962" anchor-label="Css3Color" id="-11983353%2FClasslikes%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-css3-color/index.html"><span><span>Css3Color</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-11983353%2FClasslikes%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-css3-color/index.html">Css3Color</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-css3-color/index.html">Css3Color</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Represents an RGBA COLOR value, as specified in https://tools.ietf.org/html/rfc7986#section-5.9</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="253799552%2FClasslikes%2F579055962" anchor-label="Event" id="253799552%2FClasslikes%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-event/index.html"><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="253799552%2FClasslikes%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-event/index.html">Event</a> : <a href="-i-calendar/index.html">ICalendar</a></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-520861432%2FClasslikes%2F579055962" anchor-label="Ical4Android" id="-520861432%2FClasslikes%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-ical4-android/index.html"><span><span>Ical4Android</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-520861432%2FClasslikes%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-ical4-android/index.html">Ical4Android</a></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="783046771%2FClasslikes%2F579055962" anchor-label="ICalendar" id="783046771%2FClasslikes%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-i-calendar/index.html"><span><span>ICalendar</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="783046771%2FClasslikes%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-i-calendar/index.html">ICalendar</a></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-248521810%2FClasslikes%2F579055962" anchor-label="InvalidCalendarException" id="-248521810%2FClasslikes%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-invalid-calendar-exception/index.html"><span>Invalid</span><wbr></wbr><span>Calendar</span><wbr></wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-248521810%2FClasslikes%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-invalid-calendar-exception/index.html">InvalidCalendarException</a> : <a href="https://developer.android.com/reference/kotlin/java/lang/Exception.html">Exception</a></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1358145710%2FClasslikes%2F579055962" anchor-label="JtxCollection" id="1358145710%2FClasslikes%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-jtx-collection/index.html"><span>Jtx</span><wbr></wbr><span><span>Collection</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1358145710%2FClasslikes%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-jtx-collection/index.html">JtxCollection</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="-jtx-collection/index.html">T</a><span class="token operator"> : </span><a href="-jtx-i-cal-object/index.html">JtxICalObject</a><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>account<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/accounts/Account.html">Account</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>client<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/ContentProviderClient.html">ContentProviderClient</a><span class="token punctuation">, </span></span><span class="parameter ">iCalObjectFactory<span class="token operator">: </span><a href="-jtx-i-cal-object-factory/index.html">JtxICalObjectFactory</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-jtx-i-cal-object/index.html">JtxICalObject</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>id<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1796808854%2FClasslikes%2F579055962" anchor-label="JtxCollectionFactory" id="-1796808854%2FClasslikes%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-jtx-collection-factory/index.html"><span>Jtx</span><wbr></wbr><span>Collection</span><wbr></wbr><span><span>Factory</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1796808854%2FClasslikes%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-jtx-collection-factory/index.html">JtxCollectionFactory</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="-jtx-collection-factory/index.html">T</a><span class="token operator"> : </span><a href="-jtx-collection/index.html">JtxCollection</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-jtx-i-cal-object/index.html">JtxICalObject</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-24667192%2FClasslikes%2F579055962" anchor-label="JtxICalObject" id="-24667192%2FClasslikes%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-jtx-i-cal-object/index.html"><span>Jtx</span><wbr></wbr><span>ICal</span><wbr></wbr><span><span>Object</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-24667192%2FClasslikes%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-jtx-i-cal-object/index.html">JtxICalObject</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>collection<span class="token operator">: </span><a href="-jtx-collection/index.html">JtxCollection</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-jtx-i-cal-object/index.html">JtxICalObject</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1449794320%2FClasslikes%2F579055962" anchor-label="JtxICalObjectFactory" id="1449794320%2FClasslikes%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-jtx-i-cal-object-factory/index.html"><span>Jtx</span><wbr></wbr><span>ICal</span><wbr></wbr><span>Object</span><wbr></wbr><span><span>Factory</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1449794320%2FClasslikes%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-jtx-i-cal-object-factory/index.html">JtxICalObjectFactory</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="-jtx-i-cal-object-factory/index.html">T</a><span class="token operator"> : </span><a href="-jtx-i-cal-object/index.html">JtxICalObject</a><span class="token operator">&gt;</span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-939438205%2FClasslikes%2F579055962" anchor-label="Task" id="-939438205%2FClasslikes%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-task/index.html"><span><span>Task</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-939438205%2FClasslikes%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-task/index.html">Task</a> : <a href="-i-calendar/index.html">ICalendar</a></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="746535058%2FClasslikes%2F579055962" anchor-label="TaskProvider" id="746535058%2FClasslikes%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-task-provider/index.html"><span>Task</span><wbr></wbr><span><span>Provider</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="746535058%2FClasslikes%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-task-provider/index.html">TaskProvider</a> : <a href="https://developer.android.com/reference/kotlin/java/io/Closeable.html">Closeable</a></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1084362555%2FClasslikes%2F579055962" anchor-label="UnknownProperty" id="1084362555%2FClasslikes%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-unknown-property/index.html"><span>Unknown</span><wbr></wbr><span><span>Property</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1084362555%2FClasslikes%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-unknown-property/index.html">UnknownProperty</a></div><div class="brief "><p class="paragraph">Helpers to (de)serialize unknown properties as JSON to store it in an Android ExtendedProperty row.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="748856982%2FClasslikes%2F579055962" anchor-label="UsesThreadContextClassLoader" id="748856982%2FClasslikes%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-uses-thread-context-class-loader/index.html"><span>Uses</span><wbr></wbr><span>Thread</span><wbr></wbr><span>Context</span><wbr></wbr><span>Class</span><wbr></wbr><span><span>Loader</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="748856982%2FClasslikes%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.annotation/-target/index.html"><span class="token annotation builtin">Target</span></a><span class="token punctuation">(</span><span>allowedTargets<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.annotation/-annotation-target/-c-l-a-s-s/index.html">AnnotationTarget.CLASS</a><span class="token punctuation">, </span></span><wbr></wbr><span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.annotation/-annotation-target/-c-o-n-s-t-r-u-c-t-o-r/index.html">AnnotationTarget.CONSTRUCTOR</a><span class="token punctuation">, </span></span><wbr></wbr><span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.annotation/-annotation-target/-f-u-n-c-t-i-o-n/index.html">AnnotationTarget.FUNCTION</a><span class="token punctuation">, </span></span><wbr></wbr><span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.annotation/-annotation-target/-p-r-o-p-e-r-t-y/index.html">AnnotationTarget.PROPERTY</a></span><wbr></wbr><span class="token punctuation">]</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">annotation class </span><a href="-uses-thread-context-class-loader/index.html">UsesThreadContextClassLoader</a></div><div class="brief "><p class="paragraph">Requires the current thread's <a href="https://developer.android.com/reference/kotlin/java/lang/Thread.html#getcontextclassloader">Thread.getContextClassLoader</a> to be set (not null).</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+    </div>
+</div>
+</body>
+</html>

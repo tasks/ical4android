@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>Attendee</title>
+    <link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../../index.html">
+                    <span>ical4android</span>
+            </a>
+    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
+        <div id="sideMenu"></div>
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageIds="ical4android::at.bitfire.ical4android/JtxICalObject.Attendee///PointingToDeclaration//579055962">
+  <div class="breadcrumbs"><a href="../../../../index.html">ical4android</a><span class="delimiter">/</span><a href="../../index.html">at.bitfire.ical4android</a><span class="delimiter">/</span><a href="../index.html">JtxICalObject</a><span class="delimiter">/</span><span class="current">Attendee</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Attendee</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">Attendee</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>attendeeId<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>caladdress<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>cutype<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>JtxContract.JtxAttendee.Cutype.INDIVIDUAL.name<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>member<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>role<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>JtxContract.JtxAttendee.Role.`REQ-PARTICIPANT`.name<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>partstat<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>rsvp<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>delegatedto<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>delegatedfrom<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>sentby<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>cn<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>dir<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>language<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>other<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
+    <div class="tabs-section-body">
+      <h2 class="tabbedcontent">Constructors</h2>
+      <div class="table" data-togglable="Constructors"><a data-name="629773863%2FConstructors%2F579055962" anchor-label="Attendee" id="629773863%2FConstructors%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue TabbedContent">
+            <div class=""><span class="inline-flex">
+                <div><a href="-attendee.html"><span><span>Attendee</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="629773863%2FConstructors%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-attendee.html"><span class="token function">Attendee</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">attendeeId<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter ">caladdress<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">cutype<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>JtxContract.JtxAttendee.Cutype.INDIVIDUAL.name<span class="token punctuation">, </span></span><span class="parameter ">member<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">role<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>JtxContract.JtxAttendee.Role.`REQ-PARTICIPANT`.name<span class="token punctuation">, </span></span><span class="parameter ">partstat<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">rsvp<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">delegatedto<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">delegatedfrom<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">sentby<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">cn<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">dir<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">language<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">other<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="">Properties</h2>
+      <div class="table" data-togglable="Properties"><a data-name="-530178440%2FProperties%2F579055962" anchor-label="attendeeId" id="-530178440%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="attendee-id.html"><span>attendee</span><wbr></wbr><span><span>Id</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-530178440%2FProperties%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><a data-name="-530178440%2FProperties%2F579055962" anchor-label="attendeeId" id="-530178440%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">var </span><a href="attendee-id.html">attendeeId</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span><span class="token constant">0</span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-532900185%2FProperties%2F579055962" anchor-label="caladdress" id="-532900185%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="caladdress.html"><span><span>caladdress</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-532900185%2FProperties%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><a data-name="-532900185%2FProperties%2F579055962" anchor-label="caladdress" id="-532900185%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">var </span><a href="caladdress.html">caladdress</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1772711358%2FProperties%2F579055962" anchor-label="cn" id="-1772711358%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="cn.html"><span><span>cn</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1772711358%2FProperties%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><a data-name="-1772711358%2FProperties%2F579055962" anchor-label="cn" id="-1772711358%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">var </span><a href="cn.html">cn</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1502634207%2FProperties%2F579055962" anchor-label="cutype" id="-1502634207%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="cutype.html"><span><span>cutype</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1502634207%2FProperties%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><a data-name="-1502634207%2FProperties%2F579055962" anchor-label="cutype" id="-1502634207%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">var </span><a href="cutype.html">cutype</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1585748388%2FProperties%2F579055962" anchor-label="delegatedfrom" id="1585748388%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="delegatedfrom.html"><span><span>delegatedfrom</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1585748388%2FProperties%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><a data-name="1585748388%2FProperties%2F579055962" anchor-label="delegatedfrom" id="1585748388%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">var </span><a href="delegatedfrom.html">delegatedfrom</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-57761741%2FProperties%2F579055962" anchor-label="delegatedto" id="-57761741%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="delegatedto.html"><span><span>delegatedto</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-57761741%2FProperties%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><a data-name="-57761741%2FProperties%2F579055962" anchor-label="delegatedto" id="-57761741%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">var </span><a href="delegatedto.html">delegatedto</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1647918400%2FProperties%2F579055962" anchor-label="dir" id="1647918400%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="dir.html"><span><span>dir</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1647918400%2FProperties%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><a data-name="1647918400%2FProperties%2F579055962" anchor-label="dir" id="1647918400%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">var </span><a href="dir.html">dir</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-180546571%2FProperties%2F579055962" anchor-label="language" id="-180546571%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="language.html"><span><span>language</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-180546571%2FProperties%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><a data-name="-180546571%2FProperties%2F579055962" anchor-label="language" id="-180546571%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">var </span><a href="language.html">language</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1246973683%2FProperties%2F579055962" anchor-label="member" id="1246973683%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="member.html"><span><span>member</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1246973683%2FProperties%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><a data-name="1246973683%2FProperties%2F579055962" anchor-label="member" id="1246973683%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">var </span><a href="member.html">member</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1515491299%2FProperties%2F579055962" anchor-label="other" id="-1515491299%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="other.html"><span><span>other</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1515491299%2FProperties%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><a data-name="-1515491299%2FProperties%2F579055962" anchor-label="other" id="-1515491299%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">var </span><a href="other.html">other</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1715660442%2FProperties%2F579055962" anchor-label="partstat" id="-1715660442%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="partstat.html"><span><span>partstat</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1715660442%2FProperties%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><a data-name="-1715660442%2FProperties%2F579055962" anchor-label="partstat" id="-1715660442%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">var </span><a href="partstat.html">partstat</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1211806569%2FProperties%2F579055962" anchor-label="role" id="-1211806569%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="role.html"><span><span>role</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1211806569%2FProperties%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><a data-name="-1211806569%2FProperties%2F579055962" anchor-label="role" id="-1211806569%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">var </span><a href="role.html">role</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-863329294%2FProperties%2F579055962" anchor-label="rsvp" id="-863329294%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="rsvp.html"><span><span>rsvp</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-863329294%2FProperties%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><a data-name="-863329294%2FProperties%2F579055962" anchor-label="rsvp" id="-863329294%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">var </span><a href="rsvp.html">rsvp</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token operator"> = </span>null</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1086881086%2FProperties%2F579055962" anchor-label="sentby" id="1086881086%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="sentby.html"><span><span>sentby</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1086881086%2FProperties%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><a data-name="1086881086%2FProperties%2F579055962" anchor-label="sentby" id="1086881086%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">var </span><a href="sentby.html">sentby</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+    </div>
+</div>
+</body>
+</html>

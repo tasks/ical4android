@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>CommonSyncColumns</title>
+    <link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../../index.html">
+                    <span>ical4android</span>
+            </a>
+    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
+        <div id="sideMenu"></div>
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageIds="ical4android::org.dmfs.tasks.contract/TaskContract.CommonSyncColumns///PointingToDeclaration//579055962">
+  <div class="breadcrumbs"><a href="../../../../index.html">ical4android</a><span class="delimiter">/</span><a href="../../index.html">org.dmfs.tasks.contract</a><span class="delimiter">/</span><a href="../index.html">TaskContract</a><span class="delimiter">/</span><span class="current">CommonSyncColumns</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Common</span><wbr></wbr><span>Sync</span><wbr></wbr><span><span>Columns</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">CommonSyncColumns</a></div><p class="paragraph">A set of columns for synchronization purposes. These columns exist in <a href="../-tasks/index.html">Tasks</a> and in <a href="../-task-lists/index.html">TaskLists</a> but have different meanings. Only sync adapters are allowed to change these values.</p><span class="kdoc-tag"><h4 class="">Author</h4><p class="paragraph">Marten Gajda </p></span></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Properties">Properties</button><button class="section-tab" data-togglable="Inheritors">Inheritors</button></div>
+    <div class="tabs-section-body">
+      <h2 class="">Properties</h2>
+      <div class="table" data-togglable="Properties"><a data-name="1362620522%2FProperties%2F579055962" anchor-label="_DIRTY" id="1362620522%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="_-d-i-r-t-y.html"><span><span>_DIRTY</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1362620522%2FProperties%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><a data-name="1362620522%2FProperties%2F579055962" anchor-label="_DIRTY" id="1362620522%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="_-d-i-r-t-y.html">_DIRTY</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token operator"> = </span><span class="token string">&quot;_dirty&quot;</span></div><div class="brief "><a data-name="1362620522%2FProperties%2F579055962" anchor-label="_DIRTY" id="1362620522%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>Indicates that a task or a task list has been changed.</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-42670147%2FProperties%2F579055962" anchor-label="_SYNC_ID" id="-42670147%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="_-s-y-n-c_-i-d.html"><span><span>_SYNC_ID</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-42670147%2FProperties%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><a data-name="-42670147%2FProperties%2F579055962" anchor-label="_SYNC_ID" id="-42670147%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="_-s-y-n-c_-i-d.html">_SYNC_ID</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token operator"> = </span><span class="token string">&quot;_sync_id&quot;</span></div><div class="brief "><a data-name="-42670147%2FProperties%2F579055962" anchor-label="_SYNC_ID" id="-42670147%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>A unique Sync ID as set by the sync adapter.</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-128039033%2FProperties%2F579055962" anchor-label="SYNC1" id="-128039033%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-s-y-n-c1.html"><span><span>SYNC1</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-128039033%2FProperties%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><a data-name="-128039033%2FProperties%2F579055962" anchor-label="SYNC1" id="-128039033%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-s-y-n-c1.html">SYNC1</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token operator"> = </span><span class="token string">&quot;sync1&quot;</span></div><div class="brief "><a data-name="-128039033%2FProperties%2F579055962" anchor-label="SYNC1" id="-128039033%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>A general purpose column for the sync adapter.</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-97019226%2FProperties%2F579055962" anchor-label="SYNC2" id="-97019226%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-s-y-n-c2.html"><span><span>SYNC2</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-97019226%2FProperties%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><a data-name="-97019226%2FProperties%2F579055962" anchor-label="SYNC2" id="-97019226%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-s-y-n-c2.html">SYNC2</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token operator"> = </span><span class="token string">&quot;sync2&quot;</span></div><div class="brief "><a data-name="-97019226%2FProperties%2F579055962" anchor-label="SYNC2" id="-97019226%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>A general purpose column for the sync adapter.</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-65999419%2FProperties%2F579055962" anchor-label="SYNC3" id="-65999419%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-s-y-n-c3.html"><span><span>SYNC3</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-65999419%2FProperties%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><a data-name="-65999419%2FProperties%2F579055962" anchor-label="SYNC3" id="-65999419%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-s-y-n-c3.html">SYNC3</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token operator"> = </span><span class="token string">&quot;sync3&quot;</span></div><div class="brief "><a data-name="-65999419%2FProperties%2F579055962" anchor-label="SYNC3" id="-65999419%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>A general purpose column for the sync adapter.</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-34979612%2FProperties%2F579055962" anchor-label="SYNC4" id="-34979612%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-s-y-n-c4.html"><span><span>SYNC4</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-34979612%2FProperties%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><a data-name="-34979612%2FProperties%2F579055962" anchor-label="SYNC4" id="-34979612%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-s-y-n-c4.html">SYNC4</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token operator"> = </span><span class="token string">&quot;sync4&quot;</span></div><div class="brief "><a data-name="-34979612%2FProperties%2F579055962" anchor-label="SYNC4" id="-34979612%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>A general purpose column for the sync adapter.</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-3959805%2FProperties%2F579055962" anchor-label="SYNC5" id="-3959805%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-s-y-n-c5.html"><span><span>SYNC5</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-3959805%2FProperties%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><a data-name="-3959805%2FProperties%2F579055962" anchor-label="SYNC5" id="-3959805%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-s-y-n-c5.html">SYNC5</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token operator"> = </span><span class="token string">&quot;sync5&quot;</span></div><div class="brief "><a data-name="-3959805%2FProperties%2F579055962" anchor-label="SYNC5" id="-3959805%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>A general purpose column for the sync adapter.</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="27060002%2FProperties%2F579055962" anchor-label="SYNC6" id="27060002%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-s-y-n-c6.html"><span><span>SYNC6</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="27060002%2FProperties%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><a data-name="27060002%2FProperties%2F579055962" anchor-label="SYNC6" id="27060002%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-s-y-n-c6.html">SYNC6</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token operator"> = </span><span class="token string">&quot;sync6&quot;</span></div><div class="brief "><a data-name="27060002%2FProperties%2F579055962" anchor-label="SYNC6" id="27060002%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>A general purpose column for the sync adapter.</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="58079809%2FProperties%2F579055962" anchor-label="SYNC7" id="58079809%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-s-y-n-c7.html"><span><span>SYNC7</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="58079809%2FProperties%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><a data-name="58079809%2FProperties%2F579055962" anchor-label="SYNC7" id="58079809%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-s-y-n-c7.html">SYNC7</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token operator"> = </span><span class="token string">&quot;sync7&quot;</span></div><div class="brief "><a data-name="58079809%2FProperties%2F579055962" anchor-label="SYNC7" id="58079809%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>A general purpose column for the sync adapter.</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="89099616%2FProperties%2F579055962" anchor-label="SYNC8" id="89099616%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-s-y-n-c8.html"><span><span>SYNC8</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="89099616%2FProperties%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><a data-name="89099616%2FProperties%2F579055962" anchor-label="SYNC8" id="89099616%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-s-y-n-c8.html">SYNC8</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token operator"> = </span><span class="token string">&quot;sync8&quot;</span></div><div class="brief "><a data-name="89099616%2FProperties%2F579055962" anchor-label="SYNC8" id="89099616%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>A general purpose column for the sync adapter.</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1737811753%2FProperties%2F579055962" anchor-label="SYNC_VERSION" id="1737811753%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-s-y-n-c_-v-e-r-s-i-o-n.html"><span><span>SYNC_VERSION</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1737811753%2FProperties%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/release"><a data-name="1737811753%2FProperties%2F579055962" anchor-label="SYNC_VERSION" id="1737811753%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-s-y-n-c_-v-e-r-s-i-o-n.html">SYNC_VERSION</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token operator"> = </span><span class="token string">&quot;sync_version&quot;</span></div><div class="brief "><a data-name="1737811753%2FProperties%2F579055962" anchor-label="SYNC_VERSION" id="1737811753%2FProperties%2F579055962" data-filterable-set=":dokkaHtml/release"></a>Sync version as set by the sync adapter.</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="">Inheritors</h2>
+      <div class="table" data-togglable="Inheritors"><a data-name="-1656543767%2FInheritors%2F579055962" anchor-label="TaskLists" id="-1656543767%2FInheritors%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../-task-lists/index.html">TaskLists</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1656543767%2FInheritors%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div></div>
+          </div>
+        </div>
+<a data-name="-119774933%2FInheritors%2F579055962" anchor-label="Tasks" id="-119774933%2FInheritors%2F579055962" data-filterable-set=":dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/release" data-filterable-set=":dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../-tasks/index.html">Tasks</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-119774933%2FInheritors%2F579055962"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+    </div>
+</div>
+</body>
+</html>
