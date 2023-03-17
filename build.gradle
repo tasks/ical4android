@@ -31,6 +31,10 @@ repositories {
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'org.jetbrains.dokka'
+apply plugin: 'maven-publish'
+
+group = 'com.github.tasks'
+version = '1.0'
 
 android {
     compileSdkVersion 33
@@ -99,4 +103,17 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.4.0'
     androidTestImplementation 'androidx.test:rules:1.4.0'
     testImplementation 'junit:junit:4.13.2'
+}
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = 'com.github.tasks'
+            artifactId = 'ical4android'
+            version = '1.0'
+            afterEvaluate {
+                from components.release
+            }
+        }
+    }
 }
