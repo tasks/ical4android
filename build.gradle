@@ -73,6 +73,10 @@ android {
     sourceSets {
         main.java.srcDirs = [ "src/main/java", "opentasks-contract/src/main/java" ]
     }
+
+    buildFeatures {
+        buildConfig = true
+    }
 }
 
 dependencies {
