@@ -42,7 +42,7 @@ android {
 
     defaultConfig {
         minSdkVersion 21        // Android 5.0
-        targetSdkVersion 33     // Android 12
+        targetSdkVersion 33     // Android 13
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
