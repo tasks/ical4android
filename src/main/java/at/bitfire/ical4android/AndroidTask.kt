@@ -43,8 +43,11 @@ import java.util.logging.Level
  *
  */
 abstract class AndroidTask(
-        val taskList: AndroidTaskList<AndroidTask>
+        private val taskListOpt: AndroidTaskList<AndroidTask>?
 ) {
+
+    val taskList: AndroidTaskList<AndroidTask>
+        get() = taskListOpt!!
 
     companion object {
         const val UNKNOWN_PROPERTY_DATA = Properties.DATA0
@@ -140,7 +143,7 @@ abstract class AndroidTask(
         task.sequence = values.getAsInteger(Tasks.SYNC_VERSION)
         task.summary = values.getAsString(Tasks.TITLE)
         task.location = values.getAsString(Tasks.LOCATION)
-        task.userAgents += taskList.provider.name.packageName
+//        task.userAgents += taskList.provider.name.packageName
 
         values.getAsString(Tasks.GEO)?.let { geo ->
             val (lng, lat) = geo.split(',')
