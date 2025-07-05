@@ -1,5 +1,5 @@
 [versions]
-agp = "8.9.2"
+agp = "8.11.0"
 android-desugar = "2.1.5"
 androidx-core = "1.16.0"
 androidx-test-rules = "1.6.1"
